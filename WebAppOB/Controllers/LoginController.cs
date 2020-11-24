@@ -29,12 +29,12 @@ namespace WebAppOB.Controllers
             {
                 Session["usuario"] = usu;
                 if (usu.Tipo == Usuario.EnumTipo.CLIENTE) { 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Cliente");
                 }
                 //si es operador
                 else 
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Operador");
                 }
               
                     

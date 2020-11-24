@@ -4,3 +4,9 @@ C:\Users\4815s\Desktop\obligatorio2P2\Dominio\obj\Debug\Dominio.csprojAssemblyRe
 C:\Users\4815s\Desktop\obligatorio2P2\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\4815s\Desktop\obligatorio2P2\Dominio\obj\Debug\Dominio.dll
 C:\Users\4815s\Desktop\obligatorio2P2\Dominio\obj\Debug\Dominio.pdb
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\obj\Debug\Dominio.dll
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\obj\Debug\Dominio.pdb
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\bin\Debug\Dominio.dll
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\bin\Debug\Dominio.pdb

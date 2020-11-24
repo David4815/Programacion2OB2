@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-	public class Usuario
+	public class Usuario 
 	{
 		public enum EnumTipo
 		{
@@ -38,12 +38,12 @@ namespace Dominio
 		}
 		#endregion
 
-		public Usuario()
+		public Usuario() 
 		{
 
 		}
 
-		public Usuario(string username, string password, EnumTipo tipo)
+		public Usuario(string username, string password, EnumTipo tipo) 
 		{
 			this.username = username;
 			this.password = password;

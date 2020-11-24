@@ -14,7 +14,7 @@ namespace Dominio
         private List<Destino> listaDestinos;
         private List<CompaniaAerea> listaCompaniasAereas;
         private List<Excursion> listaExcursiones;
-        private List<Cliente> personas;
+        private List<Persona> personas;
         private List<Usuario> usuarios;
 
         
@@ -29,7 +29,7 @@ namespace Dominio
             this.listaDestinos = new List<Destino>();
             this.listaCompaniasAereas = new List<CompaniaAerea>();
             this.listaExcursiones = new List<Excursion>();
-            this.personas = new List<Cliente>();
+            this.personas = new List<Persona>();
             this.usuarios = new List<Usuario>();
             this.PrecargarDatos();
         }
@@ -63,7 +63,7 @@ namespace Dominio
         }
 
 
-        public List<Cliente> Personas
+        public List<Persona> Personas
         {
             get { return personas; }
             set { personas = value; }
@@ -94,10 +94,10 @@ namespace Dominio
         #region metodos nuevos
         private void PrecargarDatos()
         {
-            this.personas.Add(new Cliente("Rigoberta", "Menchú", 1111111));
-            this.personas.Add(new Cliente("Armando", "Gervaz", 2222222));
-            this.personas.Add(new Cliente("Gaby", "Renna", 3333333));
-            this.personas.Add(new Cliente("Shirley", "Alamon", 4444444));
+            this.personas.Add(new Persona("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR,"Rigoberta", "Menchú", 1111111));
+            this.personas.Add(new Persona("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE,"Armando", "Gervaz", 2222222));
+            this.personas.Add(new Persona("operador", "oper", Usuario.EnumTipo.OPERADOR,"Gaby", "Renna", 3333333));
+            this.personas.Add(new Persona("cliente", "cli", Usuario.EnumTipo.CLIENTE,"Shirley", "Alamon", 4444444));
             
 
             this.usuarios.Add(new Usuario("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR));
