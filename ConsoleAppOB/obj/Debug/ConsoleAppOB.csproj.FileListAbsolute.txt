@@ -1,0 +1,10 @@
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\bin\Debug\ConsoleAppOB.exe.config
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\bin\Debug\ConsoleAppOB.exe
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\bin\Debug\ConsoleAppOB.pdb
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\bin\Debug\Dominio.dll
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\bin\Debug\Dominio.pdb
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\obj\Debug\ConsoleAppOB.csprojAssemblyReference.cache
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\obj\Debug\ConsoleAppOB.csproj.CoreCompileInputs.cache
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\obj\Debug\ConsoleAppOB.csproj.CopyComplete
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\obj\Debug\ConsoleAppOB.exe
+C:\Users\4815s\Desktop\obligatorio2P2\ConsoleAppOB\obj\Debug\ConsoleAppOB.pdb
