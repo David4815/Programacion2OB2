@@ -11,6 +11,10 @@ namespace WebAppOB.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
+            if (Session["usuario"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
     }

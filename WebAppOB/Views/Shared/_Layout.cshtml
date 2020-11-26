@@ -17,8 +17,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Agencia de Viajes", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Log Out", "LogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                @if (Session["usuario"] == null)
+                {
+                    @Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                }
+
+                @if (Session["usuario"] != null)
+                {
+                    if ((((Dominio.Usuario)Session["usuario"])).Tipo == Dominio.Usuario.EnumTipo.CLIENTE)
+                    {
+                        @Html.ActionLink("Compra Excursion", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Cancelacion", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    if ((((Dominio.Usuario)Session["usuario"])).Tipo == Dominio.Usuario.EnumTipo.OPERADOR)
+                    {
+                        @Html.ActionLink("Visualizar compras entre fechas", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Visualizar clientes", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Visualizar estadisticas", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    @Html.ActionLink("Log Out", "LogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                }
+
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+
+
+
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

@@ -32,6 +32,8 @@ namespace Dominio
             this.personas = new List<Persona>();
             this.usuarios = new List<Usuario>();
             this.PrecargarDatos();
+            this.PrecargarDestinos();
+            this.PrecargarExcursiones();
         }
         #endregion
 

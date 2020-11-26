@@ -3,5 +3,8 @@
     ViewBag.Title = "Index";
 }
 
+<h2>Bienvendio: @(((Dominio.Usuario)Session["usuario"]).Username)!</h2>
+    <h2>Tipo Usuario: @(((Dominio.Usuario)Session["usuario"]).Tipo)  </h2>
+
 <h2>Operador vista</h2>
 

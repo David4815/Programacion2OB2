@@ -44,7 +44,7 @@ namespace WebAppOB.Controllers
         public ActionResult LogOut()
         {
             Session["usuario"] = null;
-            return View("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
