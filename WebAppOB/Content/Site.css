@@ -34,9 +34,14 @@ footer{
 }
 
 #loginYOut {
-    float : right !important
+    float : right !important;
 }
 
 .navbar-header {
-    float: right !important
+    float: right !important;
+}
+
+table, tr, td, th {
+    border: 5px solid black !important;
+    text-align : center !important;
 }
