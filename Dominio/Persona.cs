@@ -13,7 +13,7 @@ namespace Dominio
 
 		private string nombre;
 		private string apellido;
-		private int cedula;
+		private string cedula;
         
 
        
@@ -32,7 +32,7 @@ namespace Dominio
 			set { apellido = value; }
 		}
 
-		public int Cedula
+		public string Cedula
 		{
 			get { return cedula; }
 			set { cedula = value; }
@@ -48,8 +48,9 @@ namespace Dominio
 		{
 
 		}
-		public Persona(string username, string password, EnumTipo tipo, string nombre, string apellido, int cedula): base(username,password,tipo)
+		public Persona(string username, string password, EnumTipo tipo, string nombre, string apellido, string cedula): base(username,password,tipo)
 		{
+			
 			this.nombre = nombre;
 			this.apellido = apellido;
 			this.cedula = cedula;

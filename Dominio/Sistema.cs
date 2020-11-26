@@ -96,10 +96,10 @@ namespace Dominio
         #region metodos nuevos
         private void PrecargarDatos()
         {
-            this.personas.Add(new Persona("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR,"Rigoberta", "Menchú", 1111111));
-            this.personas.Add(new Persona("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE,"Armando", "Gervaz", 2222222));
-            this.personas.Add(new Persona("operador", "oper", Usuario.EnumTipo.OPERADOR,"Gaby", "Renna", 3333333));
-            this.personas.Add(new Persona("cliente", "cli", Usuario.EnumTipo.CLIENTE,"Shirley", "Alamon", 4444444));
+            this.personas.Add(new Persona("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR,"Rigoberta", "Menchú", "1111111"));
+            this.personas.Add(new Persona("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE,"Armando", "Gervaz", "2222222"));
+            this.personas.Add(new Persona("operador", "oper", Usuario.EnumTipo.OPERADOR,"Gaby", "Renna", "3333333"));
+            this.personas.Add(new Persona("cliente", "cli", Usuario.EnumTipo.CLIENTE,"Shirley", "Alamon", "4444444"));
             
 
             this.usuarios.Add(new Usuario("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR));
@@ -118,6 +118,32 @@ namespace Dominio
                 }
             }
             return null;
+        }
+
+        public Persona BuscarPersona(int idPersona)
+        {
+            foreach (Persona persona in personas)
+            {
+                if (persona.Id == idPersona)
+                {
+                    return persona;
+                }
+            }
+            return null;
+        }
+
+        public void Registrarse(string nombre, string apellido, string cedula, string clave)
+        {
+            Persona p = new Persona(cedula, clave, Usuario.EnumTipo.CLIENTE, nombre, apellido, cedula);
+            this.personas.Add(p);
+            AgregarUsuario(p);
+            //this.personas.Add(p);
+        }
+
+        public void AgregarUsuario(Persona p)
+        {
+            Usuario u = new Usuario(p.Cedula, p.Password, p.Tipo);
+            this.usuarios.Add(u);
         }
         #endregion  
 

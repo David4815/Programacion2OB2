@@ -32,3 +32,11 @@ footer{
 .color-red{
     color: red !important;
 }
+
+#loginYOut {
+    float : right !important
+}
+
+.navbar-header {
+    float: right !important
+}
