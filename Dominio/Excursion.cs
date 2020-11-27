@@ -32,7 +32,11 @@ namespace Dominio
 
         #region Propiedades 
         
-
+        public int Codigo
+        {
+            get { return codigo; }
+            set { codigo = value; }
+        }
         public string Descripcion
         {
             get { return descripcion; }

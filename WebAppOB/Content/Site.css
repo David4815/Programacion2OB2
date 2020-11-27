@@ -41,7 +41,15 @@ footer{
     float: right !important;
 }
 
-table, tr, td, th {
+#principalExcursiones, tr, td, th {
     border: 5px solid black !important;
-    text-align : center !important;
+    text-align: center !important;
+}
+
+#principalExcursiones {
+    margin-top: 30px !important;
+}
+
+#secundariaExcursiones tr, #secundariaExcursiones th {
+    border-style: none !important;
 }

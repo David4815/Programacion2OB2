@@ -5,7 +5,7 @@
 
 @*puedo poner using dominio arriva no lo pongo para que quede mad claro*@
 
-<table>
+<table id="principalExcursiones">
     <thead>
         <tr>
             <th>Descripcion</th>
@@ -33,7 +33,7 @@
             <td>@e.Stock</td>
 
             <td>
-                <table>
+                <table id="secundariaExcursiones">
                     <thead>
                         <tr>
                             <th>Ciudad</th>
@@ -45,18 +45,7 @@
                     <tbody>
                         @foreach (Destino d in e.ListaDestinosDisponibles)
                         {
-                            @*if (e.ListaDestinosDisponibles.IndexOf(d) == e.ListaDestinosDisponibles.Count - 1)
-                        {
-                            <tr>
-                                <td>@(d.Ciudad + "-")</td>
-                                <td>@(d.CantidadDias + "-")</td>
-                                <td>@(d.CostoActualDiario)</td>
-                            </tr>
-
-
-                        }
-                        else
-                        {*@
+                            
                             <tr>
                                 <td>@d.Ciudad</td>
                                 <td>@d.CantidadDias</td>
@@ -70,25 +59,7 @@
 
                 </table>
             </td>
-        </tr>
-            
-
-            @*@if (e is Dominio.ExcursionInternacional)
-        {
-
-            ExcursionInternacional eInter = e as ExcursionInternacional
-             <
-                 <td>@eInter.CompaniaAerea</td>
-
-        }
-        else
-        {
-            ExcursionNacional eNacional = e as ExcursionNacional;
-            <td>@eNacional.InteresNacional</td>
-        }*@
-
-       
-           
+        </tr>  
 
             }
     </tbody>
