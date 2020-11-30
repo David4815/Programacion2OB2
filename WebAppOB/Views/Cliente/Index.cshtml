@@ -29,7 +29,8 @@
         {
         <tr>
             <td>
-                <form action="/cliente/Index" method="post">
+                @*Preguntarle post y get*@
+                <form action="/CompraExcursion/VisualizarExcursion" method="post">
                 <input type="hidden" name="CodigoExcursion" value="@e.Codigo" />
                 <input type="submit" value="ComprarExcursion" />
                 </form>
@@ -85,7 +86,7 @@
 
             @*@if (e is Dominio.ExcursionInternacional)
                 {
-
+                    
                     ExcursionInternacional eInter = e as ExcursionInternacional
                      <
                          <td>@eInter.CompaniaAerea</td>

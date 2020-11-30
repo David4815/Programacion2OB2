@@ -132,6 +132,18 @@ namespace Dominio
             return null;
         }
 
+        public Excursion BuscarExcursion(int codigoExcursion)
+        {
+            foreach (Excursion e in ListaExcursiones)
+            {
+                if (e.Codigo == codigoExcursion)
+                {
+                    return e;
+                }
+            }
+            return null;
+        }
+
         public void Registrarse(string nombre, string apellido, string cedula, string clave)
         {
             Persona p = new Persona(cedula, clave, Usuario.EnumTipo.CLIENTE, nombre, apellido, cedula);

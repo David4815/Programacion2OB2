@@ -34,6 +34,7 @@
                 {
                     @Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
                     @Html.ActionLink("Registrarse", "Index", "Persona", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 }
 
                 @if (Session["usuario"] != null)
@@ -52,7 +53,7 @@
                     @Html.ActionLink("Log Out", "LogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
                 }
 
-                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
 
 
 
