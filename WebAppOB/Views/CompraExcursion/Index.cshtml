@@ -24,9 +24,22 @@
 
         <th>Destinos Visitados</th>
 
+
+
         @*<th> Tipo Excursion </th>*@
         @*agrego yo y comento tipo de excursion*@
-        @if(/ViewBag.Excursion)
+        @if (ViewBag.Excursion is Dominio.ExcursionInternacional)
+        {
+            <th> Excursion Internacional </th>
+        }
+        else
+        {
+            <th> Excursion Nacional </th>
+        }
+
+        <th>Costo total(dolares)</th>
+
+        <th>Costo total(pesos)</th>
     </tr>
 </thead>
 
@@ -73,23 +86,38 @@
         <td>
             @if (ViewBag.Excursion is Dominio.ExcursionInternacional)
             {
-                <p>Es excursion internacional</p>
+
 
                 ExcursionInternacional eInter = ViewBag.Excursion as ExcursionInternacional;
                 <p>Su compania aera es: @eInter.CompaniaAerea</p>
+                <p>@eInter.Costo()</p>
 
 
 
 
-        }
+            }
             else
             {
                 ExcursionNacional eNacional = ViewBag.Excursion as ExcursionNacional;
-        @eNacional.InteresNacional
-        }
+                if (eNacional.InteresNacional)
+                {
+                    <p>Es de interes Nacional</p>
+                }
+                else
+                {
+                    <p>No es de interes nacional</p>
+                }
+            }
 
         </td>
-        </tr>
+
+        <td>
+            @(ViewBag.Excursion.Costo())
+        </td>
+        <td>
+            @(ViewBag.Excursion.Costo() * @Dominio.Sistema.CotizacionDolar)
+        </td>
+    </tr>
 
     
 </tbody>
@@ -97,6 +125,18 @@
 </table>
 
 <form action="/CompraExcursion/VisualizarExcursion" method="post">
+    <br />
+    <br />
+    <label for="txtPasajerosMayores">Pasajeros Mayores de edad: </label>
+    <input type="text" name="txtCantPasajerosMayores" />
+    <br />
+
+
+    <label for="txtPasajerosMenores">Pasajeros Menores de edad: </label>
+    <input type="text" name="txtCantPasajerosMenores" />
+    <br />
+
+
     <input type="hidden" name="CodigoExcursion" value="@ViewBag.Excursion.Codigo" />
     <input type="submit" value="Comprar" />
 </form>

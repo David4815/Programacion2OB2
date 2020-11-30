@@ -21,6 +21,8 @@
             <th>Stock</th>
 
             <th>Destinos Visitados</th>
+
+            
         </tr>
     </thead>
 
@@ -31,8 +33,8 @@
             <td>
                 @*Preguntarle post y get*@
                 <form action="/CompraExcursion/VisualizarExcursion" method="post">
-                <input type="hidden" name="CodigoExcursion" value="@e.Codigo" />
-                <input type="submit" value="ComprarExcursion" />
+                    <input type="hidden" name="CodigoExcursion" value="@e.Codigo" />
+                    <input type="submit" value="Mas Informacion" />
                 </form>
             </td>
             <td>@e.Descripcion</td>
@@ -56,31 +58,17 @@
                     <tbody>
                         @foreach (Destino d in e.ListaDestinosDisponibles)
                         {
-                            @*if (e.ListaDestinosDisponibles.IndexOf(d) == e.ListaDestinosDisponibles.Count - 1)
-                        {
-                            <tr>
-                                <td>@(d.Ciudad + "-")</td>
-                                <td>@(d.CantidadDias + "-")</td>
-                                <td>@(d.CostoActualDiario)</td>
-                            </tr>
-
-
-                        }
-                        else
-                        {*@
                             <tr>
                                 <td>@d.Ciudad</td>
                                 <td>@d.CantidadDias</td>
                                 <td>@d.CostoActualDiario</td>
                             </tr>
-                            @*}*@
-
-
                         }
                     </tbody>
 
                 </table>
             </td>
+            
         </tr>
 
 

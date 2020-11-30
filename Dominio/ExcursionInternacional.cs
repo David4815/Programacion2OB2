@@ -34,5 +34,12 @@ namespace Dominio
 
             return base.ToString() + $"\nCompania aerea: {CompaniaAerea}";
         }
+
+        public override double PrimaSegunTipo()
+        {
+             //incremento de un 10%
+            double prima = 1.1;
+            return prima; 
+        }
     }
 }

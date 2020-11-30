@@ -91,7 +91,18 @@ namespace Dominio
             return $"Codigo: {codigo}, Desscripcion: {descripcion}, Fecha comienzo: {fehcaComienzo}, Cantidad de dias: {cantidadDias}, Stock: {stock}, Costo total(dolares): {costoTotal}, Costo total(pesos): {costoTotal * Sistema.CotizacionDolar}, Destinos : {destinosDisponibles} ";
         }
 
+        public abstract double PrimaSegunTipo();
 
+        public double Costo()
+        {
+            double costoTotal = 0;
+
+            foreach (Destino i in this.ListaDestinosDisponibles)
+            {
+                costoTotal += (i.CantidadDias * i.CostoActualDiario);
+            }
+            return costoTotal;
+        }
 
     }
 }
