@@ -30,20 +30,21 @@ namespace WebAppOB.Controllers
             ViewBag.Compras = u.Compras;
             return View("Index");
         }
-        public ActionResult CancelarCompraCliente()
-        {
-            //if (Session["usuario"] == null)
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
+        //public ActionResult CancelarCompraCliente(int codigoExcursion)
+        //{
+        //    if (Session["usuario"] == null)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            //Sistema.Instancia.BorrarPersona(idPersona);
+        //    Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
+        //    Sistema.Instancia.BorrarPersona(idPersona);
 
-            //List<Persona> personas = Sistema.Instancia.Personas;
+        //    List<Persona> personas = Sistema.Instancia.Personas;
 
-            //ViewBag.Personas = personas;
+        //    ViewBag.Personas = personas;
 
-            //return View("Index");
+        //    return View("Index");
         }
     }
 }
