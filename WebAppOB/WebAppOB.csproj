@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CancelarCompraController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CompraExcursionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -142,6 +143,7 @@
     <Content Include="Views\Operador\Index.cshtml" />
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\CompraExcursion\Index.cshtml" />
+    <Content Include="Views\CancelarCompra\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

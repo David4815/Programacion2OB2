@@ -16,8 +16,16 @@ namespace Dominio
         private List<Excursion> listaExcursiones;
         private List<Persona> personas;
         private List<Usuario> usuarios;
+        private List<Compra> compras;
 
-        
+        public List<Compra> Compras
+        {
+            get { return compras; }
+            //set { compras = value; }
+        }
+
+
+
 
 
 
@@ -31,6 +39,7 @@ namespace Dominio
             this.listaExcursiones = new List<Excursion>();
             this.personas = new List<Persona>();
             this.usuarios = new List<Usuario>();
+            this.compras = new List<Compra>();
             this.PrecargarDatos();
             this.PrecargarDestinos();
             this.PrecargarExcursiones();

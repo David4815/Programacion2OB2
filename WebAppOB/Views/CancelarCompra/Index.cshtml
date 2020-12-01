@@ -1,0 +1,85 @@
+﻿@using Dominio;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cancelacion de compra</h2>
+
+
+<table id="principalExcursiones">
+    <thead>
+        <tr>
+            <th>Compra</th>
+
+            <th>Descripcion</th>
+
+            <th>Fecha Comienzo</th>
+
+            <th>Cantidad de dias</th>
+
+            <th>Stock</th>
+
+            <th>Destinos Visitados</th>
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+       
+        @foreach (Compra compra in ViewBag.Compras)
+       
+
+        
+        
+        {
+            <tr>
+                <td>
+                    @*Preguntarle post y get*@
+                    <form action="/CompraExcursion/VisualizarExcursion" method="post">
+                        @*falta agregar codigo a excursion*@
+                        <input type="hidden" name="CodigoExcursion" value="@compra.UnaExcursion.Codigo" />
+                        <input type="submit" value="Cancelar" />
+                    </form>
+                </td>
+                <td>@compra.UnaExcursion.Descripcion</td>
+                @*la Funcion ToShortDateString muestra la fecha sin la hora*@
+                <td>@compra.UnaExcursion.FechaComienzo.ToShortDateString()</td>
+
+                <td>@compra.UnaExcursion.CantidadDias</td>
+
+                <td>@compra.UnaExcursion.Stock</td>
+
+                <td>
+                    <table id="secundariaExcursiones">
+                        <thead>
+                            <tr>
+                                <th>Ciudad</th>
+                                <th>Cantidad de dias</th>
+                                <th>Costo diario</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (Destino d in compra.UnaExcursion.ListaDestinosDisponibles)
+                            {
+                                <tr>
+                                    <td>@d.Ciudad</td>
+                                    <td>@d.CantidadDias</td>
+                                    <td>@d.CostoActualDiario</td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </td>
+
+            </tr>
+
+        }
+            
+    </tbody>
+
+</table>
+
+

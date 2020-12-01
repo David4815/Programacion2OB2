@@ -27,7 +27,7 @@
     </thead>
 
     <tbody>
-        @foreach (Excursion e in Sistema.InstanciaSistema.ListaExcursiones)
+        @foreach (Excursion e in ViewBag.Excursiones)
         {
         <tr>
             <td>
@@ -70,24 +70,6 @@
             </td>
             
         </tr>
-
-
-            @*@if (e is Dominio.ExcursionInternacional)
-                {
-                    
-                    ExcursionInternacional eInter = e as ExcursionInternacional
-                     <
-                         <td>@eInter.CompaniaAerea</td>
-
-                }
-                else
-                {
-                    ExcursionNacional eNacional = e as ExcursionNacional;
-                    <td>@eNacional.InteresNacional</td>
-                }*@
-
-
-
 
         }
     </tbody>

@@ -42,8 +42,8 @@ namespace Dominio
         public override double PrimaSegunTipo()
         {
            //revisar hora en fechas
-            double prima = 0;
-            if (this.fehcaComienzo >= new DateTime(2020, 03, 01) && this.fehcaComienzo >= new DateTime(2020, 08, 31) )
+            double prima = 1;
+            if (this.fehcaComienzo >= new DateTime(2020, 03, 01) && this.fehcaComienzo <= new DateTime(2020, 08, 31) )
             {
                 //descuennto de un 10%
                 prima = 0.9; 

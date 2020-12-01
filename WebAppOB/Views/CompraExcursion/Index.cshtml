@@ -124,7 +124,7 @@
 
 </table>
 
-<form action="/CompraExcursion/VisualizarExcursion" method="post">
+<form action="/CompraExcursion/ComprarExcursion" method="post">
     <br />
     <br />
     <label for="txtPasajerosMayores">Pasajeros Mayores de edad: </label>
@@ -137,6 +137,7 @@
     <br />
 
 
-    <input type="hidden" name="CodigoExcursion" value="@ViewBag.Excursion.Codigo" />
+    <input type="hidden" name="codigoExcursion" value="@ViewBag.Excursion.Codigo" />
     <input type="submit" value="Comprar" />
+    <h2 class="color-red">@ViewBag.ErrMsg</h2>
 </form>

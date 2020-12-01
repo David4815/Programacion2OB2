@@ -42,7 +42,7 @@
                     if ((((Dominio.Usuario)Session["usuario"])).Tipo == Dominio.Usuario.EnumTipo.CLIENTE)
                     {
                         @Html.ActionLink("Compra Excursion", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
-                        @Html.ActionLink("Cancelacion", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Cancelacion", "VisualizarCompras", "CancelarCompra", new { area = "" }, new { @class = "navbar-brand" })
                     }
                     if ((((Dominio.Usuario)Session["usuario"])).Tipo == Dominio.Usuario.EnumTipo.OPERADOR)
                     {

@@ -22,7 +22,7 @@
     </thead>
 
     <tbody>
-        @foreach (Excursion e in Sistema.InstanciaSistema.ListaExcursiones)
+        @foreach (Excursion e in ViewBag.Excursiones)
         {
         <tr>
             <td>@e.Descripcion</td>

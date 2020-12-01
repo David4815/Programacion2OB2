@@ -13,6 +13,9 @@ namespace WebAppOB.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
+             List<Excursion> excursiones =  sis.ListaExcursiones;
+            ViewBag.Excursiones = excursiones;
             return View();
         }
     }

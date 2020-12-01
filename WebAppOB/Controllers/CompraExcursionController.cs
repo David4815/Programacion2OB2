@@ -26,5 +26,37 @@ namespace WebAppOB.Controllers
 
             return View("Index", e);
         }
+
+        public ActionResult ComprarExcursion(int codigoExcursion, string txtCantPasajerosMayores, string txtCantPasajerosMenores)
+        {
+
+            int cantidadPasajerosTotal = int.Parse(txtCantPasajerosMayores) + int.Parse(txtCantPasajerosMenores);
+            bool hayStock = false;
+
+            Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
+
+            Dominio.Excursion e = sis.BuscarExcursion(codigoExcursion);
+            
+
+            if(e.Stock >= cantidadPasajerosTotal)
+            {
+                hayStock = true;
+            }
+            if (hayStock)
+            {
+                Dominio.Compra unaCompra = new Dominio.Compra(e, cantidadPasajerosTotal);
+                sis.Compras.Add(unaCompra);
+                sis.BuscarUsuario(((Dominio.Usuario)Session["usuario"]).Username, ((Dominio.Usuario)Session["usuario"]).Password).Compras.Add(unaCompra);
+                e.Stock -= cantidadPasajerosTotal;
+                ViewBag.ErrMsg = "Compra exitosa";
+            }
+            else
+            {
+                ViewBag.ErrMsg = "No hay stock suficiente";
+            }
+
+            ViewBag.Excursion = e;
+            return View("Index");
+        }
     }
 }
