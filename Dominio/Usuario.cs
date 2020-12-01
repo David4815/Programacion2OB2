@@ -16,13 +16,7 @@ namespace Dominio
 		private string username;
 		private string password;
 		private EnumTipo tipo;
-        private List<Compra> compras;
-
-        public List<Compra> Compras
-        {
-            get { return compras; }
-            //set { compras = value; }
-        }
+        
 
 
 
@@ -57,7 +51,7 @@ namespace Dominio
 			this.username = username;
 			this.password = password;
 			this.tipo = tipo;
-			this.compras = new List<Compra>();
+		
 
 		}
 	}

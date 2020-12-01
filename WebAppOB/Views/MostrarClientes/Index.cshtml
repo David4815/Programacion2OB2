@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>MostrarClientes</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Cedula</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Dominio.Cliente cli in ViewBag.Clientes)
+        {
+        <tr>
+            <td>@cli.Nombre</td>
+            <td>@cli.Apellido</td>
+            <td>@cli.Cedula</td>
+        </tr>
+        }
+    </tbody>
+</table>
+

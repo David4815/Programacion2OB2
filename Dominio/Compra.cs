@@ -10,8 +10,15 @@ namespace Dominio
     {
         private Excursion unaExcursion;
         private int cantidadPasajeros;
+        private int codigo;
+        private static int ultimoCodigo = 1;
+        public int Codigo
+        {
+            get { return codigo; }
+            set { codigo = value; }
+        }
 
-        
+
 
         public Excursion UnaExcursion
         {
@@ -30,6 +37,7 @@ namespace Dominio
         {
             this.unaExcursion = unaExcursion;
             this.cantidadPasajeros = cantidadPasajeros;
+            this.codigo = ultimoCodigo++;
         }
 
     }

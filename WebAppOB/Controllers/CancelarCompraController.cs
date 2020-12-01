@@ -15,36 +15,79 @@ namespace WebAppOB.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
-        }
-
-        public ActionResult VisualizarCompras()
-        {
-            if (Session["usuario"] == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
 
             Dominio.Usuario u = sis.BuscarUsuario(((Dominio.Usuario)Session["usuario"]).Username, ((Dominio.Usuario)Session["usuario"]).Password);
-            ViewBag.Compras = u.Compras;
-            return View("Index");
+            Dominio.Cliente cli = sis.BuscarCliente(u);
+            ViewBag.Compras = cli.Compras;
+            
+            return View();
         }
-        //public ActionResult CancelarCompraCliente(int codigoExcursion)
+
+        //public ActionResult VisualizarCompras()
         //{
         //    if (Session["usuario"] == null)
         //    {
         //        return RedirectToAction("Index", "Home");
         //    }
+            
+        //}
+        public ActionResult CancelarCompraCliente(int codigoCompra)
+        {
+            if (Session["usuario"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
-        //    Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
-        //    Sistema.Instancia.BorrarPersona(idPersona);
+            Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
 
-        //    List<Persona> personas = Sistema.Instancia.Personas;
+            Dominio.Usuario u = sis.BuscarUsuario(((Dominio.Usuario)Session["usuario"]).Username, ((Dominio.Usuario)Session["usuario"]).Password);
+            Dominio.Cliente cli = sis.BuscarCliente(u);
 
-        //    ViewBag.Personas = personas;
+            List<Dominio.Compra> comprasAuxiliaresCli = new List<Dominio.Compra>();
+            List<Dominio.Compra> comprasAuxiliaresSis = new List<Dominio.Compra>();
 
-        //    return View("Index");
+            //eliminar compra de lista de compras de cliente
+            foreach (Dominio.Compra c in cli.Compras)
+            {
+                if (c.Codigo != codigoCompra) 
+                {
+                    comprasAuxiliaresCli.Add(c);
+                }
+            }
+
+            // eliminar la compra en la lista de compras general.
+            foreach (Dominio.Compra c in sis.Compras)
+            {
+                if (c.Codigo != codigoCompra)
+                {
+                    comprasAuxiliaresSis.Add(c);
+                }
+            }
+
+        
+            //ajuste de stock
+            foreach (Dominio.Compra c in sis.Compras)
+            {
+                if (c.Codigo == codigoCompra)
+                {
+                    foreach(Dominio.Excursion e in sis.ListaExcursiones) {
+                        if (e.Codigo == c.UnaExcursion.Codigo)
+                        {
+                            e.Stock += c.CantidadPasajeros;
+                        }
+                    }
+                        
+                }
+            }
+
+            cli.Compras = comprasAuxiliaresCli;
+            sis.Compras = comprasAuxiliaresSis;
+
+
+            ViewBag.Compras = cli.Compras;
+
+            return View("Index");
         }
     }
 }

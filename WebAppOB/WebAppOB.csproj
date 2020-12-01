@@ -113,10 +113,12 @@
     <Compile Include="Controllers\CancelarCompraController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CompraExcursionController.cs" />
+    <Compile Include="Controllers\ComprasEntreFechasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MostrarClientesController.cs" />
     <Compile Include="Controllers\OperadorController.cs" />
-    <Compile Include="Controllers\PersonaController.cs" />
+    <Compile Include="Controllers\ClienteRegistroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -141,9 +143,11 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Operador\Index.cshtml" />
-    <Content Include="Views\Persona\Index.cshtml" />
+    <Content Include="Views\ClienteRegistro\Index.cshtml" />
     <Content Include="Views\CompraExcursion\Index.cshtml" />
     <Content Include="Views\CancelarCompra\Index.cshtml" />
+    <Content Include="Views\ComprasEntreFechas\Index.cshtml" />
+    <Content Include="Views\MostrarClientes\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-	public class Persona : Dominio.Usuario
+	public class Cliente : Dominio.Usuario
 	{
 		private int id;
 		private static int ultId = 1;
@@ -14,13 +14,21 @@ namespace Dominio
 		private string nombre;
 		private string apellido;
 		private string cedula;
-        
-
-       
+		private List<Compra> compras;
 
 
-        #region Properties
-        public string Nombre
+
+
+		#region Properties
+
+
+
+		public List<Compra> Compras
+		{
+			get { return compras; }
+            set { compras = value; }
+        }
+		public string Nombre
 		{
 			get { return nombre; }
 			set { nombre = value; }
@@ -44,17 +52,18 @@ namespace Dominio
 		}
 	
 		#endregion
-		public Persona()
+		public Cliente()
 		{
 
 		}
-		public Persona(string username, string password, EnumTipo tipo, string nombre, string apellido, string cedula): base(username,password,tipo)
+		public Cliente(string username, string password, EnumTipo tipo, string nombre, string apellido, string cedula): base(username,password,tipo)
 		{
 			
 			this.nombre = nombre;
 			this.apellido = apellido;
 			this.cedula = cedula;
-			
+			this.compras = new List<Compra>();
+
 			this.id = ultId++;
 		}
 

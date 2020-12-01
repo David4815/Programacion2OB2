@@ -46,7 +46,7 @@ namespace WebAppOB.Controllers
             {
                 Dominio.Compra unaCompra = new Dominio.Compra(e, cantidadPasajerosTotal);
                 sis.Compras.Add(unaCompra);
-                sis.BuscarUsuario(((Dominio.Usuario)Session["usuario"]).Username, ((Dominio.Usuario)Session["usuario"]).Password).Compras.Add(unaCompra);
+                sis.BuscarCliente(sis.BuscarUsuario(((Dominio.Usuario)Session["usuario"]).Username, ((Dominio.Usuario)Session["usuario"]).Password)).Compras.Add(unaCompra);
                 e.Stock -= cantidadPasajerosTotal;
                 ViewBag.ErrMsg = "Compra exitosa";
             }

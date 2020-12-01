@@ -14,14 +14,14 @@ namespace Dominio
         private List<Destino> listaDestinos;
         private List<CompaniaAerea> listaCompaniasAereas;
         private List<Excursion> listaExcursiones;
-        private List<Persona> personas;
+        private List<Cliente> clientes;
         private List<Usuario> usuarios;
         private List<Compra> compras;
 
         public List<Compra> Compras
         {
             get { return compras; }
-            //set { compras = value; }
+            set { compras = value; }
         }
 
 
@@ -37,7 +37,7 @@ namespace Dominio
             this.listaDestinos = new List<Destino>();
             this.listaCompaniasAereas = new List<CompaniaAerea>();
             this.listaExcursiones = new List<Excursion>();
-            this.personas = new List<Persona>();
+            this.clientes = new List<Cliente>();
             this.usuarios = new List<Usuario>();
             this.compras = new List<Compra>();
             this.PrecargarDatos();
@@ -74,10 +74,10 @@ namespace Dominio
         }
 
 
-        public List<Persona> Personas
+        public List<Cliente> Clientes
         {
-            get { return personas; }
-            set { personas = value; }
+            get { return clientes; }
+            set { clientes = value; }
         }
 
         public List<Usuario> Usuarios
@@ -105,10 +105,10 @@ namespace Dominio
         #region metodos nuevos
         private void PrecargarDatos()
         {
-            this.personas.Add(new Persona("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR,"Rigoberta", "Menchú", "1111111"));
-            this.personas.Add(new Persona("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE,"Armando", "Gervaz", "2222222"));
-            this.personas.Add(new Persona("operador", "oper", Usuario.EnumTipo.OPERADOR,"Gaby", "Renna", "3333333"));
-            this.personas.Add(new Persona("cliente", "cli", Usuario.EnumTipo.CLIENTE,"Shirley", "Alamon", "4444444"));
+            //this.clientes.Add(new Cliente("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR,"Rigoberta", "Menchú", "1111111"));
+            this.clientes.Add(new Cliente("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE,"Armando", "Gervaz", "2222222"));
+            //this.clientes.Add(new Cliente("operador", "oper", Usuario.EnumTipo.OPERADOR,"Gaby", "Renna", "3333333"));
+            this.clientes.Add(new Cliente("cliente", "cli", Usuario.EnumTipo.CLIENTE,"Shirley", "Alamon", "4444444"));
             
 
             this.usuarios.Add(new Usuario("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR));
@@ -129,13 +129,25 @@ namespace Dominio
             return null;
         }
 
-        public Persona BuscarPersona(int idPersona)
+        //public Cliente BuscarPersona(int idPersona)
+        //{
+        //    foreach (Cliente persona in personas)
+        //    {
+        //        if (persona.Id == idPersona)
+        //        {
+        //            return persona;
+        //        }
+        //    }
+        //    return null;
+        //}
+
+        public Cliente BuscarCliente(Usuario u)
         {
-            foreach (Persona persona in personas)
+            foreach (Cliente cli in clientes)
             {
-                if (persona.Id == idPersona)
+                if (cli.Username == u.Username)
                 {
-                    return persona;
+                    return cli;
                 }
             }
             return null;
@@ -155,13 +167,13 @@ namespace Dominio
 
         public void Registrarse(string nombre, string apellido, string cedula, string clave)
         {
-            Persona p = new Persona(cedula, clave, Usuario.EnumTipo.CLIENTE, nombre, apellido, cedula);
-            this.personas.Add(p);
+            Cliente p = new Cliente(cedula, clave, Usuario.EnumTipo.CLIENTE, nombre, apellido, cedula);
+            this.clientes.Add(p);
             AgregarUsuario(p);
             //this.personas.Add(p);
         }
 
-        public void AgregarUsuario(Persona p)
+        public void AgregarUsuario(Cliente p)
         {
             Usuario u = new Usuario(p.Cedula, p.Password, p.Tipo);
             this.usuarios.Add(u);
