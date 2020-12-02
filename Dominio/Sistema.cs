@@ -109,12 +109,20 @@ namespace Dominio
             this.clientes.Add(new Cliente("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE,"Armando", "Gervaz", "2222222"));
             //this.clientes.Add(new Cliente("operador", "oper", Usuario.EnumTipo.OPERADOR,"Gaby", "Renna", "3333333"));
             this.clientes.Add(new Cliente("cliente", "cli", Usuario.EnumTipo.CLIENTE,"Shirley", "Alamon", "4444444"));
-            
+
+            this.clientes.Add(new Cliente("cliente2", "cli", Usuario.EnumTipo.CLIENTE, "Shirley", "Zalamon", "4444444"));
+            this.clientes.Add(new Cliente("cliente3", "cli", Usuario.EnumTipo.CLIENTE, "Shirley", "Alamon", "4444444"));
+            this.clientes.Add(new Cliente("cliente4", "cli", Usuario.EnumTipo.CLIENTE, "Zhirley", "Alamon", "4444444"));
+            this.clientes.Add(new Cliente("cliente5", "cli", Usuario.EnumTipo.CLIENTE, "Zhirley", "Balamon", "4444444"));
+            this.clientes.Add(new Cliente("cliente6", "cli", Usuario.EnumTipo.CLIENTE, "Shirley", "Balamon", "4444444"));
+
 
             this.usuarios.Add(new Usuario("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR));
             this.usuarios.Add(new Usuario("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE));
             this.usuarios.Add(new Usuario("operador", "oper", Usuario.EnumTipo.OPERADOR));
             this.usuarios.Add(new Usuario("cliente", "cli", Usuario.EnumTipo.CLIENTE));
+
+            this.usuarios.Add(new Usuario("cliente2", "cli", Usuario.EnumTipo.CLIENTE));
         }
 
         public Usuario BuscarUsuario(string username, string password)
@@ -231,7 +239,7 @@ namespace Dominio
             listaExcursiones[0].ListaDestinosDisponibles.Add(listaDestinos[0]);
             listaExcursiones[0].ListaDestinosDisponibles.Add(listaDestinos[1]);
 
-            AgregarExcursionNacional("una descripcion", new DateTime(2020, 09, 26), 5, 20, true);
+            AgregarExcursionNacional("una descripcion", new DateTime(2020, 08, 26), 5, 20, true);
             listaExcursiones[1].ListaDestinosDisponibles.Add(listaDestinos[1]);
             listaExcursiones[1].ListaDestinosDisponibles.Add(listaDestinos[2]);
             

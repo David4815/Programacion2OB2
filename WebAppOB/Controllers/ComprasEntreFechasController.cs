@@ -11,30 +11,20 @@ namespace WebAppOB.Controllers
         // GET: ComprasEntreFechas
         public ActionResult Index()
         {
+            Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
+            if (sis.Compras.Count == 0)
+            {
+                ViewBag.Verifcar = "false";
+            }
+            else
+            {
+                ViewBag.Verificar = "true";
+            }
+            
+
             return View();
         }
 
-        public ActionResult ComprasEntreFechas(DateTime inicio, DateTime fin)
-        {
-            Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
-
-            List<Dominio.Compra> listaBuscada = new List<Dominio.Compra>();
-
-                foreach (Dominio.Compra c in sis.Compras)
-                {
-                    if (c.UnaExcursion.FechaComienzo >= inicio && c.UnaExcursion.FechaComienzo <= fin)
-                    {
-
-                    listaBuscada.Add(c);
-
-                    }
-
-                }
-
-                
-            
-
-            return View("Index");
-        }
+        
     }
 }

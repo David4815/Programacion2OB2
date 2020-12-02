@@ -15,22 +15,31 @@ namespace WebAppOB.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            else if(((Dominio.Usuario)Session["usuario"]).Tipo == Dominio.Usuario.EnumTipo.CLIENTE)
+            {
+
+            
             Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
 
             Dominio.Usuario u = sis.BuscarUsuario(((Dominio.Usuario)Session["usuario"]).Username, ((Dominio.Usuario)Session["usuario"]).Password);
             Dominio.Cliente cli = sis.BuscarCliente(u);
             ViewBag.Compras = cli.Compras;
-            
-            return View();
-        }
 
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
+        }
         //public ActionResult VisualizarCompras()
         //{
         //    if (Session["usuario"] == null)
         //    {
         //        return RedirectToAction("Index", "Home");
         //    }
-            
+
         //}
         public ActionResult CancelarCompraCliente(int codigoCompra)
         {

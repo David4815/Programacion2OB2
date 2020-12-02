@@ -114,11 +114,15 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\CompraExcursionController.cs" />
     <Compile Include="Controllers\ComprasEntreFechasController.cs" />
+    <Compile Include="Controllers\DestinoMasVisitadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MostrarClientesController.cs" />
     <Compile Include="Controllers\OperadorController.cs" />
     <Compile Include="Controllers\ClienteRegistroController.cs" />
+    <Compile Include="Controllers\VerComprasEntreFechasController.cs" />
+    <Compile Include="Controllers\VisualizarEstadisticasController.cs" />
+    <Compile Include="Controllers\VisualizarExcursionesConUnDestinoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +152,10 @@
     <Content Include="Views\CancelarCompra\Index.cshtml" />
     <Content Include="Views\ComprasEntreFechas\Index.cshtml" />
     <Content Include="Views\MostrarClientes\Index.cshtml" />
+    <Content Include="Views\VerComprasEntreFechas\Index.cshtml" />
+    <Content Include="Views\VisualizarExcursionesConUnDestino\Index.cshtml" />
+    <Content Include="Views\DestinoMasVisitado\Index.cshtml" />
+    <Content Include="Views\VisualizarEstadisticas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

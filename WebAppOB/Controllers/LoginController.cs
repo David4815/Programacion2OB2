@@ -34,7 +34,7 @@ namespace WebAppOB.Controllers
                 //si es operador
                 else 
                 {
-                    return RedirectToAction("Index", "Operador");
+                    return RedirectToAction("Index", "Home");
                 }
               
                     

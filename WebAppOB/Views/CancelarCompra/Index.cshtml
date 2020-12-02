@@ -5,33 +5,37 @@
 
 <h2>Cancelacion de compra</h2>
 
+@if(ViewBag.Compras.Count == 0)
+{
+    <p>No hay Compras</p>
+}
+else { 
 
 <table id="principalExcursiones">
     <thead>
-        <tr>
-            <th>Compra</th>
+       
+            <tr>
 
-            <th>Descripcion</th>
+                <th>Compra</th>
 
-            <th>Fecha Comienzo</th>
+                <th>Descripcion</th>
 
-            <th>Cantidad de dias</th>
+                <th>Fecha Comienzo</th>
 
-            <th>Stock</th>
+                <th>Cantidad de dias</th>
 
-            <th>Destinos Visitados</th>
+                <th>Stock</th>
 
+                <th>Destinos Visitados</th>          
 
-        </tr>
-    </thead>
+            </tr>
+       
+        </thead>
 
     <tbody>
        
         @foreach (Compra compra in ViewBag.Compras)
-       
-
-        
-        
+                    
         {
             <tr>
                 <td>
@@ -75,11 +79,8 @@
                 </td>
 
             </tr>
-
-        }
-            
+        }            
     </tbody>
-
 </table>
 
-
+}

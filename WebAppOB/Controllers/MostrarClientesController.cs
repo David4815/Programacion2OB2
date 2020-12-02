@@ -14,6 +14,11 @@ namespace WebAppOB.Controllers
 
             Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
             List<Dominio.Cliente> clientes = sis.Clientes;
+
+            Dominio.OrdenarClienteApellidoYNombre ordenarPorApellidoYNombre = new Dominio.OrdenarClienteApellidoYNombre();
+           
+
+            clientes.Sort(ordenarPorApellidoYNombre);
             ViewBag.Clientes = clientes;
 
             return View();

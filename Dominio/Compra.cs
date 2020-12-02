@@ -40,5 +40,14 @@ namespace Dominio
             this.codigo = ultimoCodigo++;
         }
 
+        public double Costo()
+        {
+            double costoTotal = 0.0;
+
+            costoTotal = unaExcursion.Costo() * cantidadPasajeros * unaExcursion.PrimaSegunTipo();
+
+            return costoTotal;
+        }
+
     }
 }
