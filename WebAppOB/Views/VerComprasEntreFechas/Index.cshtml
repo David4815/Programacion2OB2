@@ -30,6 +30,8 @@ else
 
             <th>Destinos Visitados</th>
 
+            <th>Tipo Excursion</th>
+
             <th>Cantidad pasajeros</th>
 
             <th>Monto por pasajero</th>
@@ -81,6 +83,16 @@ else
                         </tbody>
 
                     </table>
+                </td>
+                <td>
+                    @if (c.UnaExcursion is Dominio.ExcursionInternacional)
+                    {
+                        <p>Excursion Internacional</p>
+                    }
+                    else
+                    {
+                        <p>Excursion Nacional</p>
+                    }
                 </td>
                 <td>
                     @c.CantidadPasajeros

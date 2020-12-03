@@ -55,48 +55,66 @@ namespace WebAppOB.Controllers
 
             List<Dominio.Compra> comprasAuxiliaresCli = new List<Dominio.Compra>();
             List<Dominio.Compra> comprasAuxiliaresSis = new List<Dominio.Compra>();
-
-            //eliminar compra de lista de compras de cliente
-            foreach (Dominio.Compra c in cli.Compras)
+            foreach(Dominio.Compra comp in cli.Compras)
             {
-                if (c.Codigo != codigoCompra) 
+                if(comp.Codigo == codigoCompra)
                 {
-                    comprasAuxiliaresCli.Add(c);
-                }
-            }
-
-            // eliminar la compra en la lista de compras general.
-            foreach (Dominio.Compra c in sis.Compras)
-            {
-                if (c.Codigo != codigoCompra)
-                {
-                    comprasAuxiliaresSis.Add(c);
-                }
-            }
-
-        
-            //ajuste de stock
-            foreach (Dominio.Compra c in sis.Compras)
-            {
-                if (c.Codigo == codigoCompra)
-                {
-                    foreach(Dominio.Excursion e in sis.ListaExcursiones) {
-                        if (e.Codigo == c.UnaExcursion.Codigo)
+                    DateTime fecha = DateTime.Today.AddDays(-10);
+                    if( fecha > comp.UnaExcursion.FechaComienzo)
+                    {
+                        //eliminar compra de lista de compras de cliente
+                        foreach (Dominio.Compra c in cli.Compras)
                         {
-                            e.Stock += c.CantidadPasajeros;
+                            if (c.Codigo != codigoCompra)
+                            {
+                                comprasAuxiliaresCli.Add(c);
+                            }
                         }
-                    }
+
+                        // eliminar la compra en la lista de compras general.
+                        foreach (Dominio.Compra c in sis.Compras)
+                        {
+                            if (c.Codigo != codigoCompra)
+                            {
+                                comprasAuxiliaresSis.Add(c);
+                            }
+                        }
+
+
+                        //ajuste de stock
+                        foreach (Dominio.Compra c in sis.Compras)
+                        {
+                            if (c.Codigo == codigoCompra)
+                            {
+                                foreach (Dominio.Excursion e in sis.ListaExcursiones)
+                                {
+                                    if (e.Codigo == c.UnaExcursion.Codigo)
+                                    {
+                                        e.Stock += c.CantidadPasajeros;
+                                    }
+                                }
+
+                            }
+                        }
+
+                        cli.Compras = comprasAuxiliaresCli;
+                        sis.Compras = comprasAuxiliaresSis;
+
+
+                        ViewBag.Compras = cli.Compras;
+
                         
+                    } else
+                    {
+                        ViewBag.Compras = cli.Compras;
+                        ViewBag.error = "Solo se puede cancelar compra hasta 10 dias antes de la fecha de la excursion";
+                    }
                 }
+               
             }
-
-            cli.Compras = comprasAuxiliaresCli;
-            sis.Compras = comprasAuxiliaresSis;
-
-
-            ViewBag.Compras = cli.Compras;
-
             return View("Index");
         }
+           
     }
 }
+

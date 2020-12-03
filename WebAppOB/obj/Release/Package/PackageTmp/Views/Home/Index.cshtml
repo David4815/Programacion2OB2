@@ -1,0 +1,97 @@
+﻿@using Dominio
+@{
+    ViewBag.Title = "Index";
+}
+
+@*puedo poner using dominio arriva no lo pongo para que quede mad claro*@
+@if (Session["usuario"] != null)
+{
+    if (((Usuario)Session["usuario"]).Tipo == Usuario.EnumTipo.OPERADOR)
+    {
+        <h2>Bienvendio: @(((Dominio.Usuario)Session["usuario"]).Username)!</h2>
+        <h2>Tipo Usuario: @(((Dominio.Usuario)Session["usuario"]).Tipo)  </h2>
+
+    }
+}
+<table id="principalExcursiones">
+    <thead>
+        <tr>
+            <th>Descripcion</th>
+
+            <th>Fecha Comienzo</th>
+
+            <th>Cantidad de dias</th>
+
+            <th>Stock</th>
+
+            <th>Destinos Visitados</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Excursion e in ViewBag.Excursiones)
+        {
+            <tr>
+                <td>@e.Descripcion</td>
+                @*la Funcion ToShortDateString muestra la fecha sin la hora*@
+                <td>@e.FechaComienzo.ToShortDateString()</td>
+
+                <td>@e.CantidadDias</td>
+
+                <td>@e.Stock</td>
+
+                <td>
+                    <table id="secundariaExcursiones">
+                        <thead>
+                            <tr>
+                                <th>Ciudad</th>
+                                <th>Cantidad de dias</th>
+                                <th>Costo diario</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (Destino d in e.ListaDestinosDisponibles)
+                            {
+
+                                <tr>
+                                    <td>@d.Ciudad</td>
+                                    <td>@d.CantidadDias</td>
+                                    <td>@d.CostoActualDiario</td>
+                                </tr>
+                                @*}*@
+
+
+                            }
+                        </tbody>
+
+                    </table>
+                </td>
+            </tr>
+
+
+
+        }
+    </tbody>
+
+</table>
+
+
+
+@*<h2>Menu Principal</h2>*@
+
+@*<a class="menuP">1 - Ingresar un destino</a>
+    <a class="menuP">2 - Visualizar todos los destinos disponibles</a>
+
+
+
+    <a class="menuP">3 - Modificar la cotizacion del dolar</a>
+    <a class="menuP">4 - Registrar excursiones</a>
+    <a class="menuP">5 - Listar todas las excursiones ingresadas</a>
+    <a class="menuP">6 - Listar excursiones que vayan a un destino dado entre dos fechas</a>
+    <a class="menuP">7 - Salir</a>*@
+
+
+
+

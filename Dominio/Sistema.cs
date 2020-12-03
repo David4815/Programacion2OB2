@@ -243,7 +243,7 @@ namespace Dominio
             listaExcursiones[1].ListaDestinosDisponibles.Add(listaDestinos[1]);
             listaExcursiones[1].ListaDestinosDisponibles.Add(listaDestinos[2]);
             
-            AgregarExcursionNacional("una descripcion", new DateTime(2020, 09, 26), 5, 20, true);
+            AgregarExcursionNacional("una descripcion", new DateTime(2020, 12, 02), 5, 20, true);
             listaExcursiones[2].ListaDestinosDisponibles.Add(listaDestinos[0]);
             listaExcursiones[2].ListaDestinosDisponibles.Add(listaDestinos[2]);
             

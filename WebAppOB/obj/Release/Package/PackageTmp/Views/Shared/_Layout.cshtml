@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    @*Agrego hoja de estilo de cliente en content css y aqui pongo un link a esa hoja si el usario es cliente*@
+    @if (Session["usuario"] != null)
+    {
+        if ((((Dominio.Usuario)(Session["usuario"])).Tipo) == Dominio.Usuario.EnumTipo.CLIENTE)
+        {
+            <link href="~/Content/estilosCliente.css" rel="stylesheet" type="text/css" />
+        }
+        if ((((Dominio.Usuario)(Session["usuario"])).Tipo) == Dominio.Usuario.EnumTipo.OPERADOR)
+        {
+            <link href="~/Content/estilosOperador.css" rel="stylesheet" type="text/css" />
+        }
+    }
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    @*prueba boostrap*@
+    @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    @*fin prueba boostrap*@
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (Session["usuario"] == null)
+                {
+                    @Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Registrarse", "Index", "ClienteRegistro", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+
+                @if (Session["usuario"] != null)
+                {
+                    if ((((Dominio.Usuario)Session["usuario"])).Tipo == Dominio.Usuario.EnumTipo.CLIENTE)
+                    {
+                        @Html.ActionLink("Compra Excursion", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Cancelacion", "Index", "CancelarCompra", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    if ((((Dominio.Usuario)Session["usuario"])).Tipo == Dominio.Usuario.EnumTipo.OPERADOR)
+                    {
+                        @Html.ActionLink("Visualizar compras entre fechas", "Index", "ComprasEntreFechas", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Visualizar clientes", "Index", "MostrarClientes", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Visualizar estadisticas", "Index", "VisualizarEstadisticas", new { area = "" }, new { @class = "navbar-brand" })
+                       
+
+                    }
+                    @Html.ActionLink("Log Out", "LogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                }
+
+
+
+
+
+
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

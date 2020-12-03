@@ -90,7 +90,7 @@
 
                 ExcursionInternacional eInter = ViewBag.Excursion as ExcursionInternacional;
                 <p>Su compania aera es: @eInter.CompaniaAerea</p>
-                <p>@eInter.Costo()</p>
+                
 
 
 
@@ -128,12 +128,12 @@
     <br />
     <br />
     <label for="txtPasajerosMayores">Pasajeros Mayores de edad: </label>
-    <input type="text" name="txtCantPasajerosMayores" />
+    <input type="text" name="txtCantPasajerosMayores" required />
     <br />
 
 
     <label for="txtPasajerosMenores">Pasajeros Menores de edad: </label>
-    <input type="text" name="txtCantPasajerosMenores" />
+    <input type="text" name="txtCantPasajerosMenores" required />
     <br />
 
 

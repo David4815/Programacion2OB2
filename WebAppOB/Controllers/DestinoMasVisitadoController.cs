@@ -12,7 +12,19 @@ namespace WebAppOB.Controllers
         // GET: DestinoMasVisitado
         public ActionResult Index()
         {
-            return View();
+            if (Session["usuario"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (((Dominio.Usuario)Session["usuario"]).Tipo == Dominio.Usuario.EnumTipo.OPERADOR)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Cliente");
+            }
+            
         }
 
         public ActionResult DestMasVisitados()

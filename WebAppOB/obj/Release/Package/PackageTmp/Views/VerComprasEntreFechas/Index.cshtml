@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Compras entre @ViewBag.FechaInicio.ToShortDateString() y @ViewBag.FechaFin.ToShortDateString() </h2>
+
+@if (ViewBag.ComprasBuscadas.Count == 0)
+{
+<p>No hay compras entre esas fechas</p>
+}
+else
+{
+
+
+
+    double montoTotal = 0;
+<table id="principalExcursiones">
+    <thead>
+        <tr>
+
+
+            <th>Descripcion</th>
+
+            <th>Fecha Comienzo</th>
+
+            <th>Cantidad de dias</th>
+
+            <th>Stock</th>
+
+            <th>Destinos Visitados</th>
+
+            <th>Cantidad pasajeros</th>
+
+            <th>Monto por pasajero</th>
+
+            <th>PrimaCosto</th>
+
+            <th>Monto total</th>
+
+
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Dominio.Compra c in ViewBag.ComprasBuscadas)
+        {
+
+            montoTotal += c.Costo();
+            <tr>
+
+                <td>@c.UnaExcursion.Descripcion</td>
+                
+                <td>@c.UnaExcursion.FechaComienzo.ToShortDateString()</td>
+
+                <td>@c.UnaExcursion.CantidadDias</td>
+
+                <td>@c.UnaExcursion.Stock</td>
+
+                <td>
+                    <table id="secundariaExcursiones">
+                        <thead>
+                            <tr>
+                                <th>Ciudad</th>
+                                <th>Cantidad de dias</th>
+                                <th>Costo diario</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (Dominio.Destino d in c.UnaExcursion.ListaDestinosDisponibles)
+                            {
+                                <tr>
+                                    <td>@d.Ciudad</td>
+                                    <td>@d.CantidadDias</td>
+                                    <td>@d.CostoActualDiario</td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </td>
+                <td>
+                    @c.CantidadPasajeros
+                </td>
+                <td>
+                    @((c.Costo()) / (c.CantidadPasajeros))
+                </td>
+                <td>
+                    @if (c.UnaExcursion.PrimaSegunTipo() > 1)
+                    {
+                        @((c.UnaExcursion.PrimaSegunTipo()) * (c.UnaExcursion.Costo()) - c.UnaExcursion.Costo());
+                    }
+                    else
+                    {
+                        @(c.UnaExcursion.Costo() - (c.UnaExcursion.PrimaSegunTipo()) * (c.UnaExcursion.Costo()));
+                    }
+                </td>
+                <td>
+                    @c.Costo()
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+
+<p>El costo total es: @montoTotal</p>
+
+
+}
+
+
+

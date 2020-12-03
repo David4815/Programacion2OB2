@@ -1,0 +1,143 @@
+﻿@using Dominio;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vista para compra excursion</h2>
+
+
+
+
+
+
+<table id="principalExcursiones">
+<thead>
+    <tr>
+
+        <th>Descripcion</th>
+
+        <th>Fecha Comienzo</th>
+
+        <th>Cantidad de dias</th>
+
+        <th>Stock</th>
+
+        <th>Destinos Visitados</th>
+
+
+
+        @*<th> Tipo Excursion </th>*@
+        @*agrego yo y comento tipo de excursion*@
+        @if (ViewBag.Excursion is Dominio.ExcursionInternacional)
+        {
+            <th> Excursion Internacional </th>
+        }
+        else
+        {
+            <th> Excursion Nacional </th>
+        }
+
+        <th>Costo total(dolares)</th>
+
+        <th>Costo total(pesos)</th>
+    </tr>
+</thead>
+
+<tbody>
+
+    <tr>
+
+        <td>@ViewBag.Excursion.Descripcion</td>
+        @*la Funcion ToShortDateString muestra la fecha sin la hora*@
+        <td>@ViewBag.Excursion.FechaComienzo.ToShortDateString()</td>
+
+        <td>@ViewBag.Excursion.CantidadDias</td>
+
+        <td>@ViewBag.Excursion.Stock</td>
+
+        <td>
+            <table id="secundariaExcursiones">
+                <thead>
+                    <tr>
+                        <th>Ciudad</th>
+                        <th>Cantidad de dias</th>
+                        <th>Costo diario</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (Destino d in ViewBag.Excursion.ListaDestinosDisponibles)
+                    {
+
+                        <tr>
+                            <td>@d.Ciudad</td>
+                            <td>@d.CantidadDias</td>
+                            <td>@d.CostoActualDiario</td>
+                        </tr>
+                        @*}*@
+
+
+                    }
+                </tbody>
+
+            </table>
+        </td>
+
+        <td>
+            @if (ViewBag.Excursion is Dominio.ExcursionInternacional)
+            {
+
+
+                ExcursionInternacional eInter = ViewBag.Excursion as ExcursionInternacional;
+                <p>Su compania aera es: @eInter.CompaniaAerea</p>
+                <p>@eInter.Costo()</p>
+
+
+
+
+            }
+            else
+            {
+                ExcursionNacional eNacional = ViewBag.Excursion as ExcursionNacional;
+                if (eNacional.InteresNacional)
+                {
+                    <p>Es de interes Nacional</p>
+                }
+                else
+                {
+                    <p>No es de interes nacional</p>
+                }
+            }
+
+        </td>
+
+        <td>
+            @(ViewBag.Excursion.Costo())
+        </td>
+        <td>
+            @(ViewBag.Excursion.Costo() * @Dominio.Sistema.CotizacionDolar)
+        </td>
+    </tr>
+
+    
+</tbody>
+
+</table>
+
+<form action="/CompraExcursion/ComprarExcursion" method="post">
+    <br />
+    <br />
+    <label for="txtPasajerosMayores">Pasajeros Mayores de edad: </label>
+    <input type="text" name="txtCantPasajerosMayores" />
+    <br />
+
+
+    <label for="txtPasajerosMenores">Pasajeros Menores de edad: </label>
+    <input type="text" name="txtCantPasajerosMenores" />
+    <br />
+
+
+    <input type="hidden" name="codigoExcursion" value="@ViewBag.Excursion.Codigo" />
+    <input type="submit" value="Comprar" />
+    <h2 class="color-red">@ViewBag.ErrMsg</h2>
+</form>

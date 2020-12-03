@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public abstract class Excursion
+    public abstract class Excursion : IComparable<Excursion>
     {
 
         protected static int ultimoCodigo = 1000;
@@ -102,6 +102,11 @@ namespace Dominio
                 costoTotal += (i.CantidadDias * i.CostoActualDiario);
             }
             return costoTotal;
+        }
+
+        public int CompareTo(Excursion otraExcursion)
+        {
+            return -this.FechaComienzo.CompareTo(otraExcursion.FechaComienzo);
         }
 
     }

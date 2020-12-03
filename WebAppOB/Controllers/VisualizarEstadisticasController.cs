@@ -12,11 +12,25 @@ namespace WebAppOB.Controllers
         // GET: VisualizarEstadisticas
         public ActionResult Index()
         {
-            Sistema sis = Sistema.InstanciaSistema;
-            List<Destino> destinos = sis.ListaDestinos;
-            ViewBag.DestinosSistema = destinos;
 
-            return View();
+            if (Session["usuario"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (((Dominio.Usuario)Session["usuario"]).Tipo == Dominio.Usuario.EnumTipo.OPERADOR)
+            {
+                Sistema sis = Sistema.InstanciaSistema;
+                List<Destino> destinos = sis.ListaDestinos;
+                ViewBag.DestinosSistema = destinos;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Cliente");
+            }
+            
+
+            
         }
     }
 }

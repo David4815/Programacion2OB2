@@ -1,0 +1,6 @@
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\bin\Release\Dominio.dll
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\bin\Release\Dominio.pdb
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\obj\Release\Dominio.csprojAssemblyReference.cache
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\obj\Release\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\obj\Release\Dominio.dll
+C:\Users\4815s\Desktop\obligatorio para subir a github\Dominio\obj\Release\Dominio.pdb

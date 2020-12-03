@@ -15,7 +15,15 @@ namespace WebAppOB.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View();
+            else if (((Dominio.Usuario)Session["usuario"]).Tipo == Dominio.Usuario.EnumTipo.OPERADOR)
+            { 
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Cliente");
+            }
+            
         }
     }
 }

@@ -16,10 +16,18 @@ namespace WebAppOB.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
-            List<Excursion> excursiones = sis.ListaExcursiones;
-            ViewBag.Excursiones = excursiones;
-            return View();
+            else if (((Dominio.Usuario)Session["usuario"]).Tipo == Dominio.Usuario.EnumTipo.CLIENTE)
+            {
+                Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
+                List<Excursion> excursiones = sis.ListaExcursiones;
+                ViewBag.Excursiones = excursiones;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
     }
 }

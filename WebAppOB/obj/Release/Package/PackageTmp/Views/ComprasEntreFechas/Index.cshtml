@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Compras entre fechas</h2>
+
+@if (ViewBag.Verificar == "true")
+{
+<form action="/VerComprasEntreFechas/CompEntreFechas" method="post">
+
+    <label for="fechaInicio">Fecha Inicio(dd/mm/aaaa)</label>
+    <input type="text" name="fechaInicio" />
+
+    <label for="fechaFin">Fecha Fin(dd/mm/aaaa)</label>
+    <input type="text" name="fechaFin" />
+
+    <input type="submit" value="Buscar" />
+
+</form>
+}
+else
+{
+    <p>No hay compras</p>
+}
+

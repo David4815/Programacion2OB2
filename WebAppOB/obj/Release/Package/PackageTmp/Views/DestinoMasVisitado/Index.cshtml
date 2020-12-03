@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Destinos mas visitados</h2>
+
+
+@foreach(Dominio.Destino d in ViewBag.DestinosBuscados)
+{
+    <p>@d.Ciudad</p>
+}
+

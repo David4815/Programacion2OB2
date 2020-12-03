@@ -11,18 +11,30 @@ namespace WebAppOB.Controllers
         // GET: ComprasEntreFechas
         public ActionResult Index()
         {
-            Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
-            if (sis.Compras.Count == 0)
+            if (Session["usuario"] == null)
             {
-                ViewBag.Verifcar = "false";
+                return RedirectToAction("Index", "Home");
+            }
+            else if (((Dominio.Usuario)Session["usuario"]).Tipo == Dominio.Usuario.EnumTipo.OPERADOR)
+            {
+                Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
+                if (sis.Compras.Count == 0)
+                {
+                    ViewBag.Verifcar = "false";
+                }
+                else
+                {
+                    ViewBag.Verificar = "true";
+                }
+
+
+                return View();
             }
             else
             {
-                ViewBag.Verificar = "true";
+                return RedirectToAction("Index", "Cliente");
             }
             
-
-            return View();
         }
 
         

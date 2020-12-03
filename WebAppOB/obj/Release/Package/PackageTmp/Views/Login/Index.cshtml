@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Login</h2>
+
+<script>
+    function checkFieldsIngreso() {
+        const nombre = document.querySelector("#txtNombreU").value;
+        if (nombre == "a" || nombre == "") {
+            alert("nombre vacio");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<form action="/Login/PerformLogin" method="POST" autocomplete="on" enctype="multipart/form-data" onsubmit="return checkFieldsIngreso()">
+    <h1>Ingreso</h1>
+
+    <!-- ingreso nombre usuario -->
+    <label for="txtNombreU">Nombre: </label>
+    <input type="text" id="txtNombreU" name="Username" placeholder="Ingrese nombre Usuario">
+    @*<input type="text" id="txtNombreU" name="nombreU" placeholder="Ingrese nombre Usuario">*@
+    <!-- <p id="errorNombreU" class="error">Nombre invalido</p> -->
+    <br>
+    <!-- ingreso contraseña -->
+    <label for="txtContraseña">Contraseña: </label>
+    <input type="password" id="txtContraseña" name="Password" placeholder="Ingrese contraseña">
+    <p id="pErrorUsuarioOContraseña" class="error"></p>
+    <!-- boton -->
+    <br><br>
+    <input type="submit" value="INGRESAR" id="btnIngresar">
+    <p id="pIngresoUsuario" class="ingreso"></p>
+    <p id="pdeshabilitado" class="error"></p>
+    <h2 class="color-red">@ViewBag.ErrMsg</h2>
+</form>
+
+
+@*<div class="wrapper fadeInDown">
+    <div id="formContent">
+         Tabs Titles 
+         Icon 
+        <div class="fadeIn first">
+            <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+        </div>
+
+         Login Form 
+        <form>
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+
+         Remind Passowrd 
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+
+    </div>
+</div>*@

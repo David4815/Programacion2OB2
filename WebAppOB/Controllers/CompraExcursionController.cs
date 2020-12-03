@@ -11,7 +11,19 @@ namespace WebAppOB.Controllers
         // GET: CompraExcursion
         public ActionResult Index()
         {
-            return View();
+            if (Session["usuario"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (((Dominio.Usuario)Session["usuario"]).Tipo == Dominio.Usuario.EnumTipo.CLIENTE)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         public ActionResult VisualizarExcursion(int codigoExcursion)
