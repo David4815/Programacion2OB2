@@ -27,32 +27,46 @@ namespace WebAppOB.Controllers
         }
         public ActionResult CompEntreFechas(string fechaInicio, string fechaFin)
         {
-            DateTime inicioVerifcado;
-            bool exito = DateTime.TryParseExact(fechaInicio, "MM/dd/yyyy", null, System.Globalization.DateTimeStyles.None, out inicioVerifcado);
-            DateTime finVerifcado;
-            bool exito2 = DateTime.TryParseExact(fechaFin, "MM/dd/yyyy", null, System.Globalization.DateTimeStyles.None, out finVerifcado);
-            Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
 
-            List<Dominio.Compra> listaBuscada = new List<Dominio.Compra>();
-
-            foreach (Dominio.Compra c in sis.Compras)
+            if (Session["usuario"] == null)
             {
-                if (c.UnaExcursion.FechaComienzo >= inicioVerifcado && c.UnaExcursion.FechaComienzo <= finVerifcado)
-                {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (((Dominio.Usuario)Session["usuario"]).Tipo == Dominio.Usuario.EnumTipo.OPERADOR)
+            {
+                DateTime inicioVerifcado;
+                bool exito = DateTime.TryParseExact(fechaInicio, "MM/dd/yyyy", null, System.Globalization.DateTimeStyles.None, out inicioVerifcado);
+                DateTime finVerifcado;
+                bool exito2 = DateTime.TryParseExact(fechaFin, "MM/dd/yyyy", null, System.Globalization.DateTimeStyles.None, out finVerifcado);
+                Dominio.Sistema sis = Dominio.Sistema.InstanciaSistema;
 
-                    listaBuscada.Add(c);
+                List<Dominio.Compra> listaBuscada = new List<Dominio.Compra>();
+
+                foreach (Dominio.Compra c in sis.Compras)
+                {
+                    if (c.UnaExcursion.FechaComienzo >= inicioVerifcado && c.UnaExcursion.FechaComienzo <= finVerifcado)
+                    {
+
+                        listaBuscada.Add(c);
+
+                    }
 
                 }
 
+                ViewBag.ComprasBuscadas = listaBuscada;
+                ViewBag.FechaInicio = inicioVerifcado;
+                ViewBag.FechaFin = finVerifcado;
+
+
+
+                return View("Index");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Cliente");
             }
 
-            ViewBag.ComprasBuscadas = listaBuscada;
-            ViewBag.FechaInicio = inicioVerifcado;
-            ViewBag.FechaFin = finVerifcado;
-
-
-
-            return View("Index");
+            
         }
     }
 }

@@ -105,24 +105,28 @@ namespace Dominio
         #region metodos nuevos
         private void PrecargarDatos()
         {
-            //this.clientes.Add(new Cliente("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR,"Rigoberta", "Menchú", "1111111"));
-            this.clientes.Add(new Cliente("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE,"Armando", "Gervaz", "2222222"));
-            //this.clientes.Add(new Cliente("operador", "oper", Usuario.EnumTipo.OPERADOR,"Gaby", "Renna", "3333333"));
-            this.clientes.Add(new Cliente("cliente", "cli", Usuario.EnumTipo.CLIENTE,"Shirley", "Alamon", "4444444"));
+           
+            
+          
+            this.clientes.Add(new Cliente("cliente", "cli", Usuario.EnumTipo.CLIENTE,"Shirley", "Alamon", "41256087"));
 
-            this.clientes.Add(new Cliente("cliente2", "cli", Usuario.EnumTipo.CLIENTE, "Shirley", "Zalamon", "4444444"));
-            this.clientes.Add(new Cliente("cliente3", "cli", Usuario.EnumTipo.CLIENTE, "Shirley", "Alamon", "4444444"));
-            this.clientes.Add(new Cliente("cliente4", "cli", Usuario.EnumTipo.CLIENTE, "Zhirley", "Alamon", "4444444"));
-            this.clientes.Add(new Cliente("cliente5", "cli", Usuario.EnumTipo.CLIENTE, "Zhirley", "Balamon", "4444444"));
-            this.clientes.Add(new Cliente("cliente6", "cli", Usuario.EnumTipo.CLIENTE, "Shirley", "Balamon", "4444444"));
+            this.clientes.Add(new Cliente("11111111", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE, "Armando", "Gervaz", "11111111"));
+            this.clientes.Add(new Cliente("22222222", "cli", Usuario.EnumTipo.CLIENTE, "Shirley", "Zalamon", "22222222"));
+            this.clientes.Add(new Cliente("33333333", "cli", Usuario.EnumTipo.CLIENTE, "Juan", "Alamon", "33333333"));
+            this.clientes.Add(new Cliente("44444444", "cli", Usuario.EnumTipo.CLIENTE, "Armando", "Alamon", "4444444"));
+            this.clientes.Add(new Cliente("55555555", "cli", Usuario.EnumTipo.CLIENTE, "Romina", "Balamon", "55555555"));
+            this.clientes.Add(new Cliente("66666666", "cli", Usuario.EnumTipo.CLIENTE, "Agustina", "Balamon", "66666666"));
 
 
-            this.usuarios.Add(new Usuario("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR));
-            this.usuarios.Add(new Usuario("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.CLIENTE));
-            this.usuarios.Add(new Usuario("operador", "oper", Usuario.EnumTipo.OPERADOR));
+
             this.usuarios.Add(new Usuario("cliente", "cli", Usuario.EnumTipo.CLIENTE));
 
-            this.usuarios.Add(new Usuario("cliente2", "cli", Usuario.EnumTipo.CLIENTE));
+            this.usuarios.Add(new Usuario("operador", "oper", Usuario.EnumTipo.OPERADOR));
+            this.usuarios.Add(new Usuario("rigobertamenchu", "guatemala", Usuario.EnumTipo.OPERADOR));
+            this.usuarios.Add(new Usuario("armandogervaz", "soyeldiosdeort", Usuario.EnumTipo.OPERADOR));
+            
+   
+            
         }
 
         public Usuario BuscarUsuario(string username, string password)
@@ -137,17 +141,7 @@ namespace Dominio
             return null;
         }
 
-        //public Cliente BuscarPersona(int idPersona)
-        //{
-        //    foreach (Cliente persona in personas)
-        //    {
-        //        if (persona.Id == idPersona)
-        //        {
-        //            return persona;
-        //        }
-        //    }
-        //    return null;
-        //}
+       
 
         public Cliente BuscarCliente(Usuario u)
         {
@@ -161,7 +155,7 @@ namespace Dominio
             return null;
         }
 
-        public Excursion BuscarExcursion(int codigoExcursion)
+        public Excursion BuscarExcursion(int? codigoExcursion)
         {
             foreach (Excursion e in ListaExcursiones)
             {
@@ -178,7 +172,7 @@ namespace Dominio
             Cliente p = new Cliente(cedula, clave, Usuario.EnumTipo.CLIENTE, nombre, apellido, cedula);
             this.clientes.Add(p);
             AgregarUsuario(p);
-            //this.personas.Add(p);
+            
         }
 
         public void AgregarUsuario(Cliente p)

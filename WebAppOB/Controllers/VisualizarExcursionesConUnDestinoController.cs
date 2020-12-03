@@ -28,21 +28,34 @@ namespace WebAppOB.Controllers
         }
         public ActionResult ExcConUnDestino(string slcDestino)
         {
-            Sistema sis = Sistema.InstanciaSistema;
-            List<Excursion> excursionesBuscadas = new List<Excursion>();
-            foreach(Excursion e in sis.ListaExcursiones)
+
+            if (Session["usuario"] == null)
             {
-                foreach(Destino d in e.ListaDestinosDisponibles)
+                return RedirectToAction("Index", "Home");
+            }
+            else if (((Dominio.Usuario)Session["usuario"]).Tipo == Dominio.Usuario.EnumTipo.OPERADOR)
+            {
+                Sistema sis = Sistema.InstanciaSistema;
+                List<Excursion> excursionesBuscadas = new List<Excursion>();
+                foreach (Excursion e in sis.ListaExcursiones)
                 {
-                    if(d.Ciudad== slcDestino)
+                    foreach (Destino d in e.ListaDestinosDisponibles)
                     {
-                        excursionesBuscadas.Add(e);
+                        if (d.Ciudad == slcDestino)
+                        {
+                            excursionesBuscadas.Add(e);
+                        }
                     }
                 }
+                excursionesBuscadas.Sort();
+                ViewBag.ExcursionesBuscadas = excursionesBuscadas;
+                return View("Index");
             }
-            excursionesBuscadas.Sort();
-            ViewBag.ExcursionesBuscadas = excursionesBuscadas;
-            return View("Index");
+            else
+            {
+                return RedirectToAction("Index", "Cliente");
+            }
+            
         }
     }
 }

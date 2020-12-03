@@ -103,7 +103,8 @@ else
                 <td>
                     @if (c.UnaExcursion.PrimaSegunTipo() > 1)
                     {
-                        @((c.UnaExcursion.PrimaSegunTipo()) * (c.UnaExcursion.Costo()) - c.UnaExcursion.Costo());
+                        @(Math.Round(((c.UnaExcursion.PrimaSegunTipo()) * (c.UnaExcursion.Costo()) - c.UnaExcursion.Costo()),2));
+                        
                     }
                     else
                     {
@@ -119,8 +120,8 @@ else
     </tbody>
 
 </table>
-
-<p>El costo total es: @montoTotal</p>
+<br />
+<H3>El costo total es: @montoTotal</H3>
 
 
 }

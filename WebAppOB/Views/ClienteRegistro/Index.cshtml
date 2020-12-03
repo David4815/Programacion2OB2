@@ -9,7 +9,7 @@
         let retorno = false;
         let nombre = document.querySelector("#Nombre").value;
         if (nombre.length < 2) {
-            alert("minimo 2 caracteres");
+            alert("Nombre minimo 2 caracteres");
             return retorno;
         }
 
@@ -18,7 +18,7 @@
          //VerificarApellido
         let apellido = document.querySelector("#Apellido").value;
         if (apellido.length < 2) {
-            alert("minimo 2 caracteres");
+            alert("Apellido minimo 2 caracteres");
             retorno = false;
             return retorno;
         }
@@ -35,7 +35,7 @@
         let cont = document.querySelector("#Password").value;
         let verificacion = /^(?=.*\d)(?=.*[a-záéíóúüñ]).*[A-ZÁÉÍÓÚÜÑ]/
         if (!verificacion.test(cont) || cont.length < 6) {
-            retorno = false,
+            retorno = false;
                 alert("la clave tiene que tener 6 caracteres una minuscual, una mayuscula y un digito");
             return retorno;
         }
